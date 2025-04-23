@@ -9,8 +9,11 @@ const { SECRET_KEY } = process.env;
 const register = async (req, res) => {
   const { name, email, password } = req.body;
   const hashedPwd = await bcrypt.hash(password, 10);
-  await User.create({ ...req.body, password: hashedPwd });
+  const user = await User.create({ ...req.body, password: hashedPwd });
+  const token = jwt.sign({ id: user._id }, SECRET_KEY, { expiresIn: "23h" });
+  await User.findByIdAndUpdate(user._id, { token });
   res.status(201).json({
+    token,
     user: {name, email}
   });
 }
