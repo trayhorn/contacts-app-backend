@@ -11,14 +11,10 @@ const router = express.Router();
 
 router.get("/", authenticate, ctrl.getAllContacts);
 
-router.get("/:id", authenticate, isValidId, ctrl.getOneContact);
-
 router.post("/", authenticate, validateBody(createContactSchema), ctrl.createContact);
 
 router.delete("/:id", authenticate, isValidId, ctrl.deleteContact);
 
-router.put("/:id",authenticate, isValidId, validateBody(updateContactSchema), ctrl.updateContact);
-
-router.patch("/:id/favorite", authenticate, isValidId, validateBody(updateFavoriteSchema), ctrl.updateStatusContact);
+router.patch("/:id",authenticate, isValidId, validateBody(updateContactSchema), ctrl.updateContact);
 
 export default router;

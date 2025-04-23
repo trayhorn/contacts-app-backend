@@ -7,14 +7,11 @@ import { ctrlWrapper } from "../helpers/ctrlWrapper.js";
 const { SECRET_KEY } = process.env;
 
 const register = async (req, res) => {
-  const { password, email } = req.body;
+  const { name, email, password } = req.body;
   const hashedPwd = await bcrypt.hash(password, 10);
-  const user = await User.create({ email, password: hashedPwd });
+  const user = await User.create({ ...req.body, password: hashedPwd });
   res.status(201).json({
-    user: {
-      email,
-      subscription: user.subscription
-    }
+    user: {name, email}
   });
 }
 
@@ -27,16 +24,15 @@ const login = async (req, res) => {
   if (!pwdCheck) throw HttpError(401, "Email or password is wrong");
 
   const token = jwt.sign({ id: user._id }, SECRET_KEY, { expiresIn: "23h" });
-  
+
   await User.findByIdAndUpdate(user._id, { token });
 
   res.status(200).json({
-    token,
+		token,
     user: {
-      email, 
-      subscription: user.subscription
-    }
-  })
+      name: user.name,
+		},
+	});
 }
 
 const logout = async (req, res) => {
@@ -47,15 +43,8 @@ const logout = async (req, res) => {
 
 const current = async (req, res) => {
   const { _id } = req.user;
-  const { email, subscription } = await User.findById(_id);
-  res.status(200).json({ email, subscription });
-}
-
-const changeSubs = async (req, res) => {
-  const { _id } = req.user;
-  const { subscription } = req.body;
-  const user = await User.findByIdAndUpdate(_id, { subscription }, { returnDocument: "after" });
-  res.status(200).json(user);
+  const { name } = await User.findById(_id);
+  res.status(200).json({ name });
 }
 
 export const ctrl = {
@@ -63,6 +52,5 @@ export const ctrl = {
 	login: ctrlWrapper(login),
 	logout: ctrlWrapper(logout),
 	current: ctrlWrapper(current),
-	changeSubs: ctrlWrapper(changeSubs),
 };
 

@@ -6,15 +6,8 @@ export const contactSchema = new Schema({
 		type: String,
 		required: [true, "Set name for contact"],
 	},
-	email: {
+	number: {
 		type: String,
-	},
-	phone: {
-		type: String,
-	},
-	favorite: {
-		type: Boolean,
-		default: false,
 	},
 	owner: {
 		type: Schema.Types.ObjectId,
@@ -24,14 +17,12 @@ export const contactSchema = new Schema({
 
 const createContactSchema = Joi.object({
 	name: Joi.string().required(),
-	phone: Joi.string().required(),
-	email: Joi.string().required(),
-	favorite: Joi.boolean().default(false)
+	number: Joi.string().required(),
 });
 
 const updateContactSchema = Joi.object({
 	name: Joi.string(),
-	phone: Joi.string(),
+	number: Joi.string(),
 	email: Joi.string()
 });
 

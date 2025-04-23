@@ -3,6 +3,10 @@ import Joi from "joi";
 import { handleMongooseError } from "../helpers/handleMongooseError.js";
 
 const userSchema = new Schema({
+	name: {
+		type: String,
+		// required: [true, "Name is required"],
+	},
 	password: {
 		type: String,
 		required: [true, "Password is required"],
@@ -26,8 +30,14 @@ const userSchema = new Schema({
 userSchema.post("save", handleMongooseError);
 
 export const registerSchema = Joi.object({
+	name: Joi.string().required(),
   password: Joi.string().required(),
   email: Joi.string().required()
 })
+
+export const loginSchema = Joi.object({
+	email: Joi.string().required(),
+	password: Joi.string().required(),
+});
 
 export const User = model('user', userSchema);

@@ -20,13 +20,6 @@ const getAllContacts = async (req, res) => {
   res.status(200).json(result);
 };
 
-const getOneContact = async (req, res) => {
-  const { id } = req.params;
-  const result = await Contact.findById(id);
-  if (!result) throw HttpError(404);
-  res.status(200).json(result);
-};
-
 const createContact = async (req, res) => {
   const { _id: owner } = req.user;
   const contact = await Contact.create({...req.body, owner});
@@ -49,18 +42,9 @@ const updateContact = async (req, res) => {
   res.status(200).json(result);
 };
 
-const updateStatusContact = async (req, res) => {
-  const { id } = req.params;
-  const result = await Contact.findByIdAndUpdate(id, req.body, {new: true});
-  if (!result) throw HttpError(404);
-  res.status(200).json(result);
-}
-
 export const ctrl = {
   getAllContacts: ctrlWrapper(getAllContacts),
-  getOneContact: ctrlWrapper(getOneContact),
   createContact: ctrlWrapper(createContact),
   deleteContact: ctrlWrapper(deleteContact),
   updateContact: ctrlWrapper(updateContact),
-  updateStatusContact: ctrlWrapper(updateStatusContact)
 }
