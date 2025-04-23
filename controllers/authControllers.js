@@ -9,7 +9,7 @@ const { SECRET_KEY } = process.env;
 const register = async (req, res) => {
   const { name, email, password } = req.body;
   const hashedPwd = await bcrypt.hash(password, 10);
-  const user = await User.create({ ...req.body, password: hashedPwd });
+  await User.create({ ...req.body, password: hashedPwd });
   res.status(201).json({
     user: {name, email}
   });

@@ -3,7 +3,6 @@ import { ctrl } from "../controllers/contactsControllers.js";
 import {
 	createContactSchema,
 	updateContactSchema,
-	updateFavoriteSchema,
 } from "../models/contact.js";
 import { isValidId, authenticate, validateBody } from "../middlewars/index.js";
 
@@ -15,6 +14,6 @@ router.post("/", authenticate, validateBody(createContactSchema), ctrl.createCon
 
 router.delete("/:id", authenticate, isValidId, ctrl.deleteContact);
 
-router.patch("/:id",authenticate, isValidId, validateBody(updateContactSchema), ctrl.updateContact);
+router.put("/:id",authenticate, isValidId, validateBody(updateContactSchema), ctrl.updateContact);
 
 export default router;

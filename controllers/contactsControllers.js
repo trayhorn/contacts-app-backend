@@ -36,7 +36,7 @@ const deleteContact = async (req, res) => {
 
 const updateContact = async (req, res) => {
   const { id } = req.params;
-  const result = await Contact.findByIdAndUpdate(id, req.body, {new: true});
+  const result = await Contact.findByIdAndUpdate(id, req.body, {new: true, select: '-owner -createdAt -updatedAt'});
   if (!result) throw HttpError(404);
 
   res.status(200).json(result);
