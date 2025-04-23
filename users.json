@@ -1,0 +1,110 @@
+[
+	{
+		"email": "alice@example.com",
+		"password": "password123"
+	},
+	{
+		"email": "bob@example.com",
+		"password": "qwerty456"
+	},
+	{
+		"email": "charlie@example.com",
+		"password": "letmein789"
+	},
+	{
+		"email": "diana@example.com",
+		"password": "securepass321"
+	},
+	{
+		"email": "edward@example.com",
+		"password": "mypassword999"
+	}
+]
+
+
+[
+    {
+        "name": "Sandra Wade",
+        "email": "robertoparks@example.net",
+        "phone": "(145) 570-7116",
+        "favorite": true
+    },
+    {
+        "name": "Christine Johnston",
+        "email": "melissa47@example.com",
+        "phone": "(340) 321-6394",
+        "favorite": false
+    },
+    {
+        "name": "Thomas Fowler",
+        "email": "tammy81@example.com",
+        "phone": "(409) 446-8560",
+        "favorite": true
+    },
+    {
+        "name": "Steven Jimenez",
+        "email": "debra83@example.net",
+        "phone": "(598) 804-3765",
+        "favorite": false
+    },
+    {
+        "name": "Brenda Murphy",
+        "email": "joshua81@example.com",
+        "phone": "(398) 369-4685",
+        "favorite": false
+    },
+    {
+        "name": "Patricia Hensley",
+        "email": "courtneyburton@example.com",
+        "phone": "(404) 208-7207",
+        "favorite": false
+    },
+    {
+        "name": "Christina Conner",
+        "email": "tuckergina@example.com",
+        "phone": "(601) 200-3905",
+        "favorite": false
+    },
+    {
+        "name": "Richard Huffman",
+        "email": "ronaldmorgan@example.org",
+        "phone": "(777) 792-8263",
+        "favorite": false
+    },
+    {
+        "name": "George Maxwell",
+        "email": "rhodesbrittany@example.net",
+        "phone": "(433) 894-7776",
+        "favorite": true
+    },
+    {
+        "name": "Brianna Tate",
+        "email": "teresaperry@example.net",
+        "phone": "(302) 799-6492",
+        "favorite": true
+    },
+    {
+        "name": "Kelly Powell",
+        "email": "mathisvanessa@example.net",
+        "phone": "(419) 507-3605",
+        "favorite": false
+    },
+    {
+        "name": "Thomas Jones",
+        "email": "chadkim@example.net",
+        "phone": "(644) 204-3365",
+        "favorite": false
+    },
+    {
+        "name": "Adam Ferguson",
+        "email": "jessicadelacruz@example.com",
+        "phone": "(802) 893-9013",
+        "favorite": true
+    },
+    {
+        "name": "Douglas Cain",
+        "email": "haysjames@example.net",
+        "phone": "(234) 683-9609",
+        "favorite": false
+    }
+]
