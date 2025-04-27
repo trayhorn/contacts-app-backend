@@ -14,7 +14,7 @@ const register = async (req, res) => {
   await User.findByIdAndUpdate(user._id, { token });
   res.status(201).json({
     token,
-    user: {name, email}
+    user: {name}
   });
 }
 
